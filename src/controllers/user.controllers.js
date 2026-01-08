@@ -1,5 +1,7 @@
 const userModel = require('../models/user.model');
 const bcrypt =require('bcrypt')
+const jwt = require("jsonwebtoken");
+
 
 async function registerUser (req,res){
 
@@ -62,10 +64,20 @@ if (!user) {
 if (!isPasswordMatched) {
  return res.status(400).json({ message: "Invalid credentials " });}
 
+//token code 
+
+ const token = jwt.sign(
+            { userId: user._id }, 
+            process.env.JWT_SECRET
+        );
+
+
 //   if all ok send response
 res.status(200).json({
 message: "Login Successful ",
-user: user });
+user: user,
+token :token 
+ });
 
  } catch (error) {
         res.status(500).json({ error: error.message });
