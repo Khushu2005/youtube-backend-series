@@ -29,6 +29,21 @@ const hashedpassword = await bcrypt.hash(password, 10)
 // line 4: create user
 const user = await userModel.create({ username, email, password : hashedpassword});
 
+//token 
+const token = jwt.sign(
+            { userId: user._id }, 
+            process.env.JWT_SECRET
+        );
+
+// cookies
+ res.cookie("token", token, {
+httpOnly: true,
+expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+sameSite: 'none', 
+secure: true       
+});
+
+
      
 // line 5: send response
 res.status(201).json({
@@ -70,6 +85,15 @@ if (!isPasswordMatched) {
             { userId: user._id }, 
             process.env.JWT_SECRET
         );
+
+//cookies save 
+
+ res.cookie("token", token, {
+httpOnly: true,
+expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+sameSite: 'none', 
+secure: true       
+});
 
 
 //   if all ok send response
