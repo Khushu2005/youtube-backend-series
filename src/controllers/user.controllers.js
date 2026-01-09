@@ -89,10 +89,10 @@ if (!isPasswordMatched) {
 //cookies save 
 
  res.cookie("token", token, {
-httpOnly: true,
-expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-sameSite: 'none', 
-secure: true       
+httpOnly: true,  //// Client-side scripts(Browser ki JavaScript) ko cookie access karne se block karta hai (XSS Protection)
+expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),  // 7 days k baad token expire hojayega 
+sameSite: 'none',  //Alag-alag domain (Frontend Netlify, Backend Render) pe cookie allow karne ke liye
+secure: true        //// Cookie sirf HTTPS (Secure connection) par hi send hogi
 });
 
 
