@@ -107,4 +107,23 @@ token :token
     }
 };
 
-module.exports={registerUser , loginUser}
+
+async function logoutUser(req,res){
+      res.clearCookie("token", {
+
+        httpOnly:true,
+        sameSite:true,
+        secure:true
+
+
+      });
+
+      res.status(200).json({
+        message:"Logged out successfully!"
+      })
+        
+
+    
+}
+
+module.exports={registerUser , loginUser,logoutUser}
