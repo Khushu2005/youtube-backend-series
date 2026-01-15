@@ -126,4 +126,24 @@ async function logoutUser(req,res){
     
 }
 
-module.exports={registerUser , loginUser,logoutUser}
+async function getUserProfile(req, res){
+  try {
+    
+    const user = await userModel.findById(req.user.userId).select("username email"); 
+
+    if (!user) {
+      return res.status(404).json({  message: 'User not found' });
+    }
+
+    res.status(200).json({
+      success: true,
+      user,
+    });
+  } 
+  catch (error) {
+    res.status(500).json({ success: false, error });
+  }
+};
+
+
+module.exports={registerUser , loginUser,logoutUser , getUserProfile}
