@@ -145,5 +145,36 @@ async function getUserProfile(req, res){
   }
 };
 
+async function updateProfile(req,res){
 
-module.exports={registerUser , loginUser,logoutUser , getUserProfile}
+  try{
+    const {username,email}=req.body;
+
+    const Updateduser = await userModel.findByIdAndUpdate(
+      req.user.userId,
+
+      {username,email},
+
+      {new:true}
+    ).select('-password');
+
+    res.status(200).json({
+      message:"Profile updated successfully ",
+      Updateduser
+    });
+
+  }
+  catch(error){
+    res.status(500).json({
+      error:"Error in updating user"
+    })
+  }
+
+}
+
+
+
+
+
+
+module.exports={registerUser , loginUser,logoutUser , getUserProfile , updateProfile }
