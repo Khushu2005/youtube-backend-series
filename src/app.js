@@ -1,22 +1,19 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 
-
+// routes export
 const userRoutes = require("../src/routes/user.routes")
-
+const noteRoute = require('../src/routes/note.routes')
 
 const app = express();
 
-
+//middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.get('/dashboard', (req, res) => {
-    res.json({
-        message: "Welcome to Dashboard",
-        secretData: "Oho bina login kre aagye ho !!", 
-        user: "Admin Access Granted"
-    });
-});
 
+//routes
 app.use('/api/auth',userRoutes)
+app.use('/api/note',noteRoute)
+
+
 module.exports = app;
