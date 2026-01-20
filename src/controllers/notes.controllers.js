@@ -27,7 +27,23 @@ const createNote = async(req,res)=>{
   }
 };
 
+const getNotes = async (req, res) => {
+  try {
+   
+    const notes = await noteModel.find({ userId: req.user.userId });
+
+    res.status(200).json({
+      message: "Notes Fetched",
+      notes, 
+      count: notes.length
+    });
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 module.exports = {
-    createNote
+    createNote,
+    getNotes
 }
