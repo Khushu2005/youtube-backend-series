@@ -43,7 +43,30 @@ const getNotes = async (req, res) => {
   }
 };
 
+const deleteNote = async (req, res) => {
+  try {
+    const noteId = req.params.id; // 
+    const userId = req.user.userId; // 
+
+
+    const note = await noteModel.findOneAndDelete({
+      _id: noteId,
+      userId: userId
+    });
+
+    if (!note) {
+      return res.status(404).json({ message: "Note not found or you are not authorized" });
+    }
+
+    res.status(200).json({ message: "Note Deleted Successfully" });
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
     createNote,
-    getNotes
+    getNotes,
+    deleteNote
 }
