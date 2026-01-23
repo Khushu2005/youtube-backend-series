@@ -65,8 +65,33 @@ const deleteNote = async (req, res) => {
   }
 };
 
+
+const updateNote = async (req, res) => {
+  try {
+    const noteId = req.params.id; 
+    const { title, content } = req.body;
+
+  
+    const  updatedNote = await noteModel.findOneAndUpdate(
+      { _id: noteId, userId: req.user.userId },
+      { title, content },
+      { new: true }
+    );
+
+    if (!updatedNote) {
+      return res.status(404).json({ message: "Note not found or unauthorized" });
+    }
+
+    res.status(200).json(updatedNote);
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
     createNote,
     getNotes,
-    deleteNote
+    deleteNote,
+    updateNote
 }
