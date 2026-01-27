@@ -13,3 +13,6 @@ yarn-error.log*
 .idea/
 *.iml
 *.swp
+
+*.css
+*.css.map
