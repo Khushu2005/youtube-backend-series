@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f1f2f6;
+  color: #2f3542;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.dashboard-container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.dashboard-container header h1 {
+  color: #2f3542;
+  font-size: 28px;
+}
+.dashboard-container header h1 span {
+  color: #ff4757;
+}
+.dashboard-container header .logout-btn {
+  background: transparent;
+  border: 2px solid #ff4757;
+  color: #ff4757;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.dashboard-container header .logout-btn:hover {
+  background: #ff4757;
+  color: #ffffff;
+}
+.dashboard-container .notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.dashboard-container .notes-grid .empty-state {
+  grid-column: 1/-1;
+  text-align: center;
+  color: #57606f;
+  margin-top: 50px;
+}/*# sourceMappingURL=Dashboard.css.map */

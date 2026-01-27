@@ -1,0 +1,45 @@
+@use '../styles/global.scss' as *; 
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+  .auth-box {
+    @include card-style; 
+    text-align: center;
+
+    h2 {
+      margin-bottom: 1.5rem;
+      color: $strawberry;
+      font-size: 24px;
+    }
+
+    form {
+      input {
+        @include input-style; 
+      }
+
+      button {
+        @include btn-style; 
+      }
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 14px;
+      color: $dark-gray;
+
+      a {
+        color: $strawberry;
+        text-decoration: none;
+        font-weight: 600;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

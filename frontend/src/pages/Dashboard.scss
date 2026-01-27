@@ -1,0 +1,53 @@
+@use '../styles/global.scss' as *;
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+
+    h1 {
+      color: $black;
+      font-size: 28px;
+      
+      span {
+        color: $strawberry; 
+      }
+    }
+
+    .logout-btn {
+      background: transparent;
+      border: 2px solid $strawberry;
+      color: $strawberry;
+      padding: 8px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+
+      &:hover {
+        background: $strawberry;
+        color: $white;
+      }
+    }
+  }
+
+
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: $dark-gray;
+      margin-top: 50px;
+    }
+  }
+}

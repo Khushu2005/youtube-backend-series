@@ -1,0 +1,65 @@
+@use "sass:color"; // 👈 Ye line sabse upar add karni zaruri hai
+
+// 🍓 Theme Colors
+$strawberry: #ff4757;  
+$black: #2f3542;       
+$dark-gray: #57606f;   
+$white: #ffffff;       
+$bg-soft: #f1f2f6;     
+
+// 🛠️ Global Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: $bg-soft;
+  color: $black;
+}
+
+// 🧱 Mixins
+@mixin card-style {
+  background: $white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+}
+
+@mixin input-style {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #dfe4ea;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  outline: none;
+
+  &:focus {
+    border-color: $strawberry;
+    box-shadow: 0 0 0 3px rgba($strawberry, 0.1);
+  }
+}
+
+@mixin btn-style {
+  width: 100%;
+  padding: 12px;
+  background-color: $strawberry;
+  color: $white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    // 👇 Old 'darken' hata kar ye naya syntax lagaya hai
+    background-color: color.adjust($strawberry, $lightness: -10%);
+  }
+}

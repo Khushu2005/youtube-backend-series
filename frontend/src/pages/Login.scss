@@ -1,0 +1,46 @@
+@use '../styles/global.scss' as *;
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .login-box {
+    @include card-style;
+    text-align: center;
+
+    h2 {
+      color: $black;
+      margin-bottom: 8px;
+    }
+    
+    .sub-text {
+      color: $dark-gray;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    form {
+      input {
+        @include input-style;
+      }
+      
+      button {
+        @include btn-style;
+      }
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 14px;
+      color: $dark-gray;
+
+      a {
+        color: $strawberry;
+        text-decoration: none;
+        font-weight: 600;
+      }
+    }
+  }
+}
