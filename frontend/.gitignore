@@ -26,6 +26,9 @@ dist-ssr
 *.sln
 *.sw?
 
-# CSS
-*.css
-*.css.map
+# Ignore compiled CSS
+src/**/*.css
+src/**/*.css.map
+
+# Allow SCSS
+!src/**/*.scss
