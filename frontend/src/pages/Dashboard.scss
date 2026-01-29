@@ -5,6 +5,7 @@
   margin: 0 auto;
   padding: 40px 20px;
 
+  // --- HEADER SECTION ---
   header {
     display: flex;
     justify-content: space-between;
@@ -37,17 +38,102 @@
     }
   }
 
+  // --- 🔥 NEW: CREATE NOTE FORM STYLE ---
+  .create-note-section {
+    background: $white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); // Halka sa shadow
+    max-width: 600px; 
+    margin: 0 auto 50px auto; // Center me aur neeche gap
 
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      input, textarea {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 14px;
+        outline: none;
+        transition: 0.3s;
+        resize: none; 
+
+        &:focus {
+          border-color: $strawberry; // Focus karne pe Strawberry border
+          box-shadow: 0 0 0 3px rgba($strawberry, 0.1);
+        }
+
+        &::placeholder {
+          color: #b2bec3;
+        }
+      }
+
+      button {
+        background: $strawberry;
+        color: $white;
+        border: none;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: #d63031; // Hover pe thoda dark
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  // --- NOTES GRID ---
   .notes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 25px;
     
     .empty-state {
       grid-column: 1 / -1;
       text-align: center;
       color: $dark-gray;
       margin-top: 50px;
+    }
+
+    // --- 🔥 NEW: CARD STYLE ---
+    .note-card {
+      background: $white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid #f1f2f6;
+      transition: 0.3s ease;
+
+      // Hover karne par card upar uthega
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border-color: rgba($strawberry, 0.3);
+      }
+
+      h3 {
+        font-size: 18px;
+        color: $black;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 14px;
+        color: $dark-gray;
+        line-height: 1.6;
+        white-space: pre-wrap; // Line breaks maintain rahenge
+      }
     }
   }
 }
