@@ -1,0 +1,43 @@
+@use './global.scss' as *;
+
+
+%btn-base {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.btn-edit {
+  @extend %btn-base;
+  background: #f39c12; // Orange/Yellow
+
+  &:hover {
+    background: #e67e22;
+    box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-delete {
+  @extend %btn-base;
+  background: $strawberry; // Red
+
+  &:hover {
+    background: #d63031;
+    box-shadow: 0 4px 8px rgba(255, 71, 87, 0.3);
+    transform: translateY(-2px);
+  }
+}

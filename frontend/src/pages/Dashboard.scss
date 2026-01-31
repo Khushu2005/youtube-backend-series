@@ -5,47 +5,56 @@
   margin: 0 auto;
   padding: 40px 20px;
 
-  // --- HEADER SECTION ---
+  // --- Header ---
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
+.logout-btn {
+    background: transparent;
+    border: 2px solid $strawberry; 
+    color: $strawberry;
+    padding: 8px 24px; 
+    border-radius: 50px; 
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px; 
 
+   
+    &:hover {
+      background: $strawberry;
+      color: $white;
+      transform: translateY(-2px); 
+      box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3); 
+    }
+
+    
+    &:active {
+      transform: scale(0.95);
+    }
+  }
     h1 {
       color: $black;
       font-size: 28px;
-      
-      span {
-        color: $strawberry; 
-      }
+      span { color: $strawberry; }
     }
 
-    .logout-btn {
-      background: transparent;
-      border: 2px solid $strawberry;
-      color: $strawberry;
-      padding: 8px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.3s;
-
-      &:hover {
-        background: $strawberry;
-        color: $white;
-      }
-    }
+    
   }
 
-  // --- 🔥 NEW: CREATE NOTE FORM STYLE ---
+  // --- Form Section ---
   .create-note-section {
     background: $white;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); // Halka sa shadow
-    max-width: 600px; 
-    margin: 0 auto 50px auto; // Center me aur neeche gap
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0 auto 50px auto;
 
     form {
       display: flex;
@@ -61,51 +70,44 @@
         font-size: 14px;
         outline: none;
         transition: 0.3s;
-        resize: none; 
+        resize: none;
 
         &:focus {
-          border-color: $strawberry; // Focus karne pe Strawberry border
+          border-color: $strawberry;
           box-shadow: 0 0 0 3px rgba($strawberry, 0.1);
-        }
-
-        &::placeholder {
-          color: #b2bec3;
         }
       }
 
+      // Main Form Button (Add/Update)
       button {
-        background: $strawberry;
-        color: $white;
-        border: none;
         padding: 12px;
         border-radius: 8px;
         font-size: 16px;
         font-weight: 600;
         cursor: pointer;
+        color: $white;
+        border: none;
         transition: 0.3s;
-
-        &:hover {
-          background-color: #d63031; // Hover pe thoda dark
-          transform: translateY(-2px);
-        }
+        
+        &.btn-add { background: $strawberry; &:hover { background: #d63031; transform: translateY(-2px); } }
+        &.btn-update { background: #f39c12; &:hover { background: #e67e22; transform: translateY(-2px); } }
       }
     }
   }
 
-  // --- NOTES GRID ---
+  // --- Notes Grid ---
   .notes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
-    
-    .empty-state {
+
+    .empty-text {
       grid-column: 1 / -1;
       text-align: center;
       color: $dark-gray;
       margin-top: 50px;
     }
 
-    // --- 🔥 NEW: CARD STYLE ---
     .note-card {
       background: $white;
       padding: 20px;
@@ -113,26 +115,28 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
       border: 1px solid #f1f2f6;
       transition: 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-      // Hover karne par card upar uthega
       &:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         border-color: rgba($strawberry, 0.3);
       }
 
-      h3 {
-        font-size: 18px;
-        color: $black;
-        margin-bottom: 10px;
-        font-weight: 600;
+      .note-content {
+        margin-bottom: 20px;
+        h3 { font-size: 18px; color: $black; margin-bottom: 10px; font-weight: 600; }
+        p { font-size: 14px; color: $dark-gray; line-height: 1.6; white-space: pre-wrap; }
       }
 
-      p {
-        font-size: 14px;
-        color: $dark-gray;
-        line-height: 1.6;
-        white-space: pre-wrap; // Line breaks maintain rahenge
+
+      .card-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end; 
+        margin-top: auto;
       }
     }
   }
